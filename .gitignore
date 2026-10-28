@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+
+# No lockfile: this is a template, and a clone should start on the current SDK.
+# A lockfile here would freeze @bkc-network-lib/sdk at whatever shipped the day
+# it was committed - npm prefers the lock over the range in package.json.
+package-lock.json

@@ -1,0 +1,8 @@
+node_modules/
+artifacts/
+cache/
+.env
+
+# A template should start on the current plugin, not the one pinned the day
+# this was committed.
+package-lock.json

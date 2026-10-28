@@ -1,0 +1,415 @@
+/*
+ * BKC's own palette, taken from the landing page: navy ground, electric blue, and the gold
+ * from the ribbon in the logo. No UI framework - a starter that ships one teaches it.
+ */
+
+:root {
+  --bg: #040a18;
+  --bg-2: #071229;
+  --surface: rgba(15, 37, 82, 0.35);
+  --surface-solid: #0a1734;
+  --border: rgba(110, 160, 255, 0.14);
+  --border-strong: rgba(110, 160, 255, 0.3);
+  --text: #e8eefc;
+  --muted: #8ea2c9;
+  --blue: #1f6bff;
+  --blue-2: #3d8bff;
+  --navy: #0f3d82;
+  --cyan: #38d6ff;
+  --gold: #ffc531;
+  --gold-2: #ffdf7a;
+  --danger: #ff6b6b;
+  --ok: #3ddc97;
+
+  --radius: 18px;
+  --font-head: "Poppins", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+
+  /* two soft lights, blue and gold, so the flat navy has somewhere to fall off to */
+  background-image:
+    radial-gradient(900px 480px at 12% -12%, rgba(31, 107, 255, 0.22), transparent 60%),
+    radial-gradient(760px 420px at 92% 6%, rgba(255, 197, 49, 0.1), transparent 62%);
+  background-attachment: fixed;
+}
+
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+
+/* ---------------------------------------------------------------- header */
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
+}
+
+header img {
+  width: 68px;
+  height: auto;
+  /* the logo is drawn for white; on navy it needs its own glow to sit right */
+  filter: drop-shadow(0 4px 18px rgba(31, 107, 255, 0.55));
+}
+
+header h1 {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------------- cards */
+
+section {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* An empty state that belongs to the panel it is in, not to the top of the page. */
+.notice-inline {
+  border: 1px solid rgba(255, 197, 49, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 197, 49, 0.07);
+  padding: 1.1rem 1.25rem;
+}
+
+.notice-inline strong {
+  color: var(--gold-2);
+}
+
+.notice-inline p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+section.error {
+  border-color: rgba(255, 107, 107, 0.35);
+  background: rgba(255, 107, 107, 0.08);
+  color: #ffc9c9;
+  font-size: 0.9rem;
+  /* a chain error can be one very long unbroken line */
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- account */
+
+dl {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem 1rem;
+  margin: 0;
+  align-items: baseline;
+}
+
+dt {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+dd.balance {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(92deg, var(--gold), var(--gold-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------- counter */
+
+.count {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-head);
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  background: linear-gradient(170deg, var(--text), var(--blue-2) 55%, var(--navy));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------- forms */
+
+.field {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.field span {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: rgba(4, 10, 24, 0.6);
+  color: var(--text);
+  font: 0.9rem var(--font-mono);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(31, 107, 255, 0.2);
+}
+
+input:disabled {
+  opacity: 0.5;
+}
+
+/* the counter's value field, beside its button rather than above it */
+input.narrow {
+  width: 6rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+button {
+  /* inline-flex so a spinner sits beside the label; .copy overrides it below */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font: 600 0.92rem var(--font-body);
+  padding: 0.72rem 1.4rem;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+  box-shadow: 0 6px 20px rgba(31, 107, 255, 0.28);
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* the gold one is the write that costs gas - it should not look like the rest */
+button.gold {
+  background: linear-gradient(135deg, var(--gold), #e8a200);
+  color: #2a1a00;
+  box-shadow: 0 6px 20px rgba(255, 197, 49, 0.25);
+}
+
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+/* The busy label is shorter, so without a floor the button shrinks under the cursor. */
+button.busy {
+  min-width: 11.5rem;
+}
+
+.spinner {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  opacity: 0.85;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+button:disabled {
+  background: rgba(110, 160, 255, 0.09);
+  color: rgba(142, 162, 201, 0.55);
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------------------------------------------------------------- bits */
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  padding: 0.16rem 0.45rem;
+  border-radius: 7px;
+  background: rgba(4, 10, 24, 0.7);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.hint {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.pill {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(31, 107, 255, 0.12);
+  color: var(--blue-2);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.pill.live {
+  border-color: rgba(61, 220, 151, 0.4);
+  background: rgba(61, 220, 151, 0.12);
+  color: var(--ok);
+}
+
+/* A command on its own line, sized to be copied rather than read. */
+.command {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.65rem 0.6rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: rgba(4, 10, 24, 0.72);
+}
+
+.command code {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: 0.84rem;
+  /* long on a narrow screen: scroll it rather than wrap a command across lines */
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+button.copy {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+}
+
+button.copy:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  background: rgba(31, 107, 255, 0.12);
+  color: var(--gold);
+  transform: none;
+  filter: none;
+}
+
+@media (max-width: 520px) {
+  dl {
+    grid-template-columns: 1fr;
+    gap: 0.25rem 0;
+  }
+  dt {
+    margin-top: 0.6rem;
+  }
+  .count {
+    font-size: 3rem;
+  }
+}
